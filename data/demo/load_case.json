@@ -1,0 +1,83 @@
+{
+  "id": "DEMO-balanced-load",
+  "time_s": 0,
+  "mode": "snapshot",
+  "boundary": "free",
+  "assumptions": "合力・合モーメントが釣り合う検証用荷重。実機の飛行履歴ではない。",
+  "points": [
+    {
+      "id": "load1",
+      "partId": "unspecified",
+      "role": "external",
+      "s": 0,
+      "Fx": 0,
+      "Fy": 100,
+      "Fz": 0,
+      "Mx": 0,
+      "My": 0,
+      "Mz": 0
+    },
+    {
+      "id": "load2",
+      "partId": "unspecified",
+      "role": "external",
+      "s": 0.2,
+      "Fx": 500,
+      "Fy": 0,
+      "Fz": 0,
+      "Mx": 0,
+      "My": 0,
+      "Mz": 0
+    },
+    {
+      "id": "load3",
+      "partId": "unspecified",
+      "role": "external",
+      "s": 0.5,
+      "Fx": 0,
+      "Fy": -200,
+      "Fz": 0,
+      "Mx": 0,
+      "My": 0,
+      "Mz": 0
+    },
+    {
+      "id": "load4",
+      "partId": "unspecified",
+      "role": "external",
+      "s": 0.6,
+      "Fx": -1000,
+      "Fy": 0,
+      "Fz": 0,
+      "Mx": 0,
+      "My": 0,
+      "Mz": 0
+    },
+    {
+      "id": "load5",
+      "partId": "unspecified",
+      "role": "external",
+      "s": 0.8,
+      "Fx": 500,
+      "Fy": 0,
+      "Fz": 0,
+      "Mx": 0,
+      "My": 0,
+      "Mz": 0
+    },
+    {
+      "id": "load6",
+      "partId": "unspecified",
+      "role": "external",
+      "s": 1,
+      "Fx": 0,
+      "Fy": 100,
+      "Fz": 0,
+      "Mx": 0,
+      "My": 0,
+      "Mz": 0
+    }
+  ],
+  "distributed": [],
+  "reference": 0.5
+}

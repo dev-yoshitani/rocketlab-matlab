@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "id": "DEMO-two-segment",
+  "revision": "1",
+  "units": "SI",
+  "coordinates": "station_RHS",
+  "length": 1,
+  "assumed": true,
+  "members": [
+    {
+      "id": "front",
+      "s0": 0,
+      "s1": 0.5,
+      "diameter": 0.05,
+      "thickness": 0.002,
+      "E": 7.0E+10,
+      "nu": 0.33,
+      "density": 2700,
+      "tension": 1.2E+8,
+      "compression": 1.0E+8,
+      "shear": 6.0E+7,
+      "deflection": 0.01,
+      "strengthFactor": 1.5,
+      "source": "synthetic demo assumptions"
+    },
+    {
+      "id": "aft",
+      "s0": 0.5,
+      "s1": 1,
+      "diameter": 0.05,
+      "thickness": 0.001,
+      "E": 7.0E+10,
+      "nu": 0.33,
+      "density": 2700,
+      "tension": 1.2E+8,
+      "compression": 1.0E+8,
+      "shear": 6.0E+7,
+      "deflection": 0.01,
+      "strengthFactor": 1.5,
+      "source": "synthetic demo assumptions"
+    }
+  ],
+  "joints": [
+    {
+      "s": 0.5,
+      "ky": 20000,
+      "kz": 20000
+    }
+  ],
+  "requiredEvaluations": [
+    "tension",
+    "compression",
+    "shear",
+    "deflection"
+  ]
+}

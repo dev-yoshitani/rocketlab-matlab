@@ -1,0 +1,29 @@
+function comparison=compare_vertical_histories(ref,flight)
+% Raw logs are retained; only identical continuous duplicate samples are aligned.
+t=flight.time_s; state=[flight.altitude_m,flight.velocity_m_s,flight.mass_kg];
+assert(all(isfinite(state),'all')&&all(isfinite(t))&&all(diff(t)>=0),'rocketlab:TimeOrder','Invalid Simulink time/state history.');
+duplicate=find(diff(t)==0);
+for k=duplicate'
+ assert(max(abs(state(k,:)-state(k+1,:)))<=1e-12,'rocketlab:EventAlignment','Discontinuous duplicate samples require explicit event-side alignment.');
+end
+keep=[diff(t)>0;true]; t=t(keep); state=state(keep,:);
+assert(isfinite(ref.apogee_s)&&isfinite(flight.apogee_s),'rocketlab:MissingApogee','A simulation ended without reaching apogee.');
+mask=t>=ref.time_s(1)&t<=ref.time_s(end); query=t(mask); state=state(mask,:);
+assert(numel(query)>1&&abs(query(1)-ref.time_s(1))<1e-12,'rocketlab:TimeCoverage','Comparison does not cover the initial time.');
+expected=interp1(ref.time_s,[ref.altitude_m,ref.velocity_m_s,ref.mass_kg],query,'pchip');
+absolute=[1e-3,1e-3,1e-6]; relative=1e-3; limit=absolute+relative*abs(expected);
+err=abs(state-expected);
+eventError=abs([flight.altitude_m(end),flight.velocity_m_s(end),flight.mass_kg(end)]- ...
+ [ref.altitude_m(end),ref.velocity_m_s(end),ref.mass_kg(end)]);
+eventLimit=absolute+relative*abs([ref.altitude_m(end),ref.velocity_m_s(end),ref.mass_kg(end)]);
+comparison=struct('stateWithinTolerance',all(err<=limit,'all'), ...
+ 'stateOrder',["altitude_m","velocity_m_s","mass_kg"],'maxAbsoluteError',max(err,[],1), ...
+ 'absoluteTolerance',absolute,'relativeTolerance',relative,'apogeeStateError',eventError, ...
+ 'apogeeStateWithinTolerance',all(eventError<=eventLimit), ...
+ 'eventTimeDifference_s',abs(flight.apogee_s-ref.apogee_s),'eventTolerance_s',.01, ...
+ 'referenceApogee_s',ref.apogee_s,'simulinkApogee_s',flight.apogee_s, ...
+ 'comparedSamples',numel(query),'identicalDuplicateSamples',numel(duplicate), ...
+ 'comparisonEnd_s',query(end),'alignment',"pchip on overlapping times; terminal apogee states compared separately", ...
+ 'source',"numerical software agreement, not real-vehicle prediction accuracy");
+comparison.passed=comparison.stateWithinTolerance&&comparison.apogeeStateWithinTolerance&&comparison.eventTimeDifference_s<=comparison.eventTolerance_s;
+end

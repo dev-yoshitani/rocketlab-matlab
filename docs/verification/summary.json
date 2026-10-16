@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "timeUTC": "2026/10/16 01:35:37",
+  "matlab": "26.2.0.3386108 (R2026b)",
+  "release": "2026b",
+  "simulink": true,
+  "aerospaceBlockset": true,
+  "testsPassed": 73,
+  "testsFailed": 0,
+  "testsIncomplete": 0,
+  "codeHash": "fe29f1cbc61c1033240d06ca93c5d2b35bbaece96d46e745e86577f4dc2c4edc",
+  "guidedDemoVerified": true,
+  "displayUnitsVerified": true,
+  "resultInvalidationVerified": true,
+  "reportExportVerified": true,
+  "nativeFlightComparisonVerified": true,
+  "postburnStructuralTransferVerified": true,
+  "privateSourceAdapterAbsent": true,
+  "flightComparison": [
+    5.85964338961049E-7,
+    2.0784786785964985E-5,
+    2.2695625779854651E-8,
+    7.0048758231404663E-7
+  ],
+  "forceResidual_N": 2.3656161930175807E-14,
+  "momentResidual_Nm": 3.0930358550198653E-15,
+  "wholeVehicleStatus": "not_evaluated"
+}

@@ -1,0 +1,19 @@
+function h=vertical_history(p,time,state,apogeeTime,engine)
+% Common SI history; acceleration is coordinate acceleration, including gravity.
+time=time(:); assert(size(state,1)==numel(time)&&size(state,2)==3,'rocketlab:FlightHistory','Invalid state history.');
+q=zeros(size(time)); mach=q; thrust=q; drag=q; accel=q; flow=q;
+for k=1:numel(time)
+ [dy,a]=rocketlab.vertical_rhs(time(k),state(k,:)',p);
+ q(k)=a.q_Pa; mach(k)=a.mach; thrust(k)=a.thrust_N; drag(k)=a.drag_N;
+ accel(k)=dy(2); flow(k)=a.massFlow;
+end
+phase=repmat("free_ascent",numel(time),1);
+phase(state(:,1)<=1e-8 & state(:,2)<=0)="ground";
+h=struct('schemaVersion',1,'id',p.id,'time_s',time,'altitude_m',state(:,1), ...
+ 'velocity_m_s',state(:,2),'mass_kg',state(:,3),'q_Pa',q,'mach',mach, ...
+ 'thrust_N',thrust,'drag_N',drag,'acceleration_m_s2',accel,'massFlow_kg_s',flow, ...
+ 'phase',phase,'apogee_s',apogeeTime,'burnout_s',p.time(end),'parameters',p, ...
+ 'engine',string(engine),'model',"vertical 1DOF ascent only", ...
+ 'coordinates',"fixed body datum, up positive; attitude fixed; SI", ...
+ 'accelerationConvention',"coordinate acceleration including gravity");
+end

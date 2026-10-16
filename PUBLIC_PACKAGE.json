@@ -1,0 +1,448 @@
+{
+  "schemaVersion": 1,
+  "edition": "synthetic-public-source",
+  "status": "verified",
+  "files": [
+    {
+      "file": ".gitattributes",
+      "sha256": "3a7517e0e5d769bbc59d156805cd154f59030c79eb86d3320ab4fed97d7df31e"
+    },
+    {
+      "file": ".github/workflows/public-content.yml",
+      "sha256": "52af6c14ecc59a36c07b16ba14c49e467c62a4f647902ad3edf9a313b3d0b04c"
+    },
+    {
+      "file": ".gitignore",
+      "sha256": "800149602a7b576fd613e75722440bee31a7a0d11004f56cbc1f69cc4cac490f"
+    },
+    {
+      "file": "build_flight_model.m",
+      "sha256": "dbcc3c8c90ed5eb9c979cb65e2b4344dfb46d362f2ade495184e9a3416cbc4fc"
+    },
+    {
+      "file": "build_sixdof_model.m",
+      "sha256": "593f16da2ab9c743dd53151f58a201c712fb5ee34ab2c72dbf84384db0de4acf"
+    },
+    {
+      "file": "compare_flight_model.m",
+      "sha256": "34d874babb90bc22a86c78d4c183fc952474afc5eeee6fa959360a3289e34e67"
+    },
+    {
+      "file": "compare_sixdof_model.m",
+      "sha256": "e96b8d8a4e779f9f5d495c91c581c751c3b9e17ccb7b03df655301202f34c422"
+    },
+    {
+      "file": "CONTRIBUTING.md",
+      "sha256": "f79af9ea9bbfdbc58c53a05ec107499842226ede8d7682d446c9c1b6ca32a181"
+    },
+    {
+      "file": "data/demo/load_case.json",
+      "sha256": "34e4905b4063a3b55c23accf93f06eaac69bc7c69cc43b0ffaa258b979b39ab3"
+    },
+    {
+      "file": "data/demo/vehicle.json",
+      "sha256": "3515186249d817df6b3e93bd48ae7355e1196a853c013128ce85d34aae00de1f"
+    },
+    {
+      "file": "docs/images/checks.png",
+      "sha256": "82b7031a9706c5b45b6a381e0c1acccf4ed8ca047034e843fff11287766ded5f"
+    },
+    {
+      "file": "docs/images/deformation.png",
+      "sha256": "96f30132af4129337645d8c2a805f9661c5ddb1ca6e85a5e59aa4571df6cb212"
+    },
+    {
+      "file": "docs/images/flight.png",
+      "sha256": "550decab6c9813a002af227073b35a4ae2ba7771c51d2f4a472aebe01bd82644"
+    },
+    {
+      "file": "docs/images/flight_structure.png",
+      "sha256": "04b997a447f1f265e278b19191f2425b40a4eff1bc0f560413a893e13af58ebb"
+    },
+    {
+      "file": "docs/images/home.png",
+      "sha256": "c4554b1f3ecd1051ea56fd6a8318f8193e1c6c8c09a29d44b859d55141126282"
+    },
+    {
+      "file": "docs/images/home_compact.png",
+      "sha256": "446e1effa3c696d7907017ed3a962388b279878674d51340f72c46bf0209ca4a"
+    },
+    {
+      "file": "docs/images/input.png",
+      "sha256": "29ba6bfb203b74aa235466456fc9b01cd47292e6ed2df78dd0fef598d8f8f5a0"
+    },
+    {
+      "file": "docs/images/report.png",
+      "sha256": "867548ab8955b7a1a6714acb84c691220f9de68f890800da2e9b878af49f6aa4"
+    },
+    {
+      "file": "docs/images/structure.png",
+      "sha256": "2bfecfbb19ce2edba4d89dc928a23e82d7f5f14b6d712aea47a91b0789c230fa"
+    },
+    {
+      "file": "docs/PUBLISH.md",
+      "sha256": "787cfb3fb6383b4106b1435f9f75033b8976514299981b0cf5f893ed2c8cf715"
+    },
+    {
+      "file": "docs/USER_GUIDE.md",
+      "sha256": "918336d2ead2386a1a89eb95e68043ebdd98591ab2fc56e67720434de158813f"
+    },
+    {
+      "file": "docs/verification/summary.json",
+      "sha256": "ef73649b1d394ee898085fd851c28e89623a9cb1feeaae23a22e2192df026edd"
+    },
+    {
+      "file": "docs/verification/tests.csv",
+      "sha256": "799ee9ea0f280c365f855ec92cd1259a71a3563469988974cfb1d8048ebc7aa4"
+    },
+    {
+      "file": "docs/VERIFICATION.md",
+      "sha256": "01cd6274d12a6f1943e698cbd586c9d20009d8706c98b4b78720f643a8c8211e"
+    },
+    {
+      "file": "export_report.m",
+      "sha256": "3e7719b14de8fc1153625f4d92a4c8af8233e1b29e2a54bb3291eb10562e9982"
+    },
+    {
+      "file": "launch_app.m",
+      "sha256": "644d755effdf35c02780828766d91f13ceed9bbffa1ce6d2ee90c4f54a1e217a"
+    },
+    {
+      "file": "LICENSE",
+      "sha256": "85559a97d0cdecf359e1c380bc09db48464ebe786828813ceb2365a83dd42751"
+    },
+    {
+      "file": "README.md",
+      "sha256": "b6847ff1b2b074c514f9a9a3596dce0b80209f0494a5192468dd66911d0fce35"
+    },
+    {
+      "file": "run_case.m",
+      "sha256": "6cec49c16bed1497437ffb98fc24de9392a6fc333491b835fd15a58fae744df7"
+    },
+    {
+      "file": "run_demo.m",
+      "sha256": "49d259638d248b23d1297b1c789a5c524f1352dd0eb6778510c770af89fe15d0"
+    },
+    {
+      "file": "run_flight_structure_demo.m",
+      "sha256": "53ab48ba39544e602bf3e8b1e4c71950ba28e704803e4a6423be5cb3bf634fab"
+    },
+    {
+      "file": "run_sixdof_demo.m",
+      "sha256": "59810d60416fe3fe254000e17391ccc13481d4a08fe3e64da6d9b2a367f01ba2"
+    },
+    {
+      "file": "run_tests.m",
+      "sha256": "f89347148eb45a01e0b8b71694c6187e21acd1dc286dee3f958e15def37a43f4"
+    },
+    {
+      "file": "src/+rocketlab/analyze_case.m",
+      "sha256": "4bdac980e4cd1e1402e1667ba842efd372435bfcbe34a2370f9f8360243b5275"
+    },
+    {
+      "file": "src/+rocketlab/apply_input_view.m",
+      "sha256": "eeb9234a309a76e764eecd189224724454d420e456ffc24042a2bc0d6278edec"
+    },
+    {
+      "file": "src/+rocketlab/balance.m",
+      "sha256": "47e866b33b96ae26169884788e79a5dfc1bf4db8907dc68633e72bfbc4a8783d"
+    },
+    {
+      "file": "src/+rocketlab/beam_modes.m",
+      "sha256": "773167092a6dec57103a4289c8b017dd6032dea956bfa79c16428f0d6a5ea3c6"
+    },
+    {
+      "file": "src/+rocketlab/beam_response.m",
+      "sha256": "c33e0d5e3f9140d12a2cb07ae698aca8d5d86d553c0c554572bc85afc8942466"
+    },
+    {
+      "file": "src/+rocketlab/check.m",
+      "sha256": "6e8a24190453d669f59df79e3542b8841e8ae3d7b48a56ea7e48572698e7714f"
+    },
+    {
+      "file": "src/+rocketlab/code_hash.m",
+      "sha256": "5237e7cddc4610187dfac926eda7aec97e58c891dc90da5586030cf39961026e"
+    },
+    {
+      "file": "src/+rocketlab/compare_sixdof_histories.m",
+      "sha256": "7dec58b2f34f2ad86ff0added0e0b221d0444b8f2e37eae368364eb23496bb1b"
+    },
+    {
+      "file": "src/+rocketlab/compare_vertical_histories.m",
+      "sha256": "075dd82374593c02ef9a315b091e3f8fdd96fedf1431af0b06e9121362c3d1b0"
+    },
+    {
+      "file": "src/+rocketlab/critical_stations.m",
+      "sha256": "e42cd61aad41347b3eeb939d02dd4798cbaab14d6509327c0d84c6567f847764"
+    },
+    {
+      "file": "src/+rocketlab/demo_config.m",
+      "sha256": "184b68d4329a51a47cb72daeeaef53dc3835e331604d4ca2178b54dd98e8b733"
+    },
+    {
+      "file": "src/+rocketlab/empty_distributed.m",
+      "sha256": "ba66f6677a2d1f87923548b94d18901603e1123f61253bb725c3741461b9e5d5"
+    },
+    {
+      "file": "src/+rocketlab/euler_column.m",
+      "sha256": "1ab52e73bf25ee4ff6e5faf94a03d665cfa1c01d7a0442de91c1fd2c1174d672"
+    },
+    {
+      "file": "src/+rocketlab/euler_quat.m",
+      "sha256": "18d0c794a86aedd2473fe546c86010ee6df9e6105703858dd066280b22353b32"
+    },
+    {
+      "file": "src/+rocketlab/fem_exchange.m",
+      "sha256": "9e3faaf8c16ffb321dc69f64e7cfcffe116191f80e064bd39dc2f381949a165c"
+    },
+    {
+      "file": "src/+rocketlab/fin_distribution.m",
+      "sha256": "96d25d9b944279619f0927062c56e206ebae5cbdef8cccc98b115625e7c43442"
+    },
+    {
+      "file": "src/+rocketlab/flight_demo_config.m",
+      "sha256": "e2eb65bf752ecf672a336bee845d1d76c693fcff2ae2ce658a33a14b27f96bea"
+    },
+    {
+      "file": "src/+rocketlab/flight_structure_demo.m",
+      "sha256": "6a45f605747cc2f1643ad315ebb2c9e2520af4a06b08a272c6dd0ff66ff43b03"
+    },
+    {
+      "file": "src/+rocketlab/flight_structure_summary.m",
+      "sha256": "9efce981b80057b4c079ebd22dc595f3a586659abf53f416bc6018fdb61019f0"
+    },
+    {
+      "file": "src/+rocketlab/hash.m",
+      "sha256": "b052d579e56e2d1c74cbddd607e0e5942bfcd9fe6a174049df61ea282c236bc1"
+    },
+    {
+      "file": "src/+rocketlab/inertial_loads.m",
+      "sha256": "6be0b6e1ab2769f56a5edb87861eca8d461bc5c0a130189df0d389502dc20183"
+    },
+    {
+      "file": "src/+rocketlab/input_view.m",
+      "sha256": "d25bd9b555a42895576b99d2ff67a688c0d4b1bbc6d80c4629e6f265c17575c4"
+    },
+    {
+      "file": "src/+rocketlab/interpolate_segment.m",
+      "sha256": "802ae86dd69eb450cd553bc8e8fa4a9739bd4514a6efedb7107e64a138018ee6"
+    },
+    {
+      "file": "src/+rocketlab/joint_test_fit.m",
+      "sha256": "d1fe7035278c3671cf90550a0ba58f4b67aee323985f4a3174fb4a7fe8bf8574"
+    },
+    {
+      "file": "src/+rocketlab/laminate_abd.m",
+      "sha256": "7dfff0c7d2ad8a78b9e4bc1f6d798eb11612f77e9b7ec4baf01e2813e2ddda85"
+    },
+    {
+      "file": "src/+rocketlab/load_envelope.m",
+      "sha256": "ab38dd863a0098a1435e5e47b9453e85c32c972f6ce1d24145ad4a01d8f807a6"
+    },
+    {
+      "file": "src/+rocketlab/mass_properties.m",
+      "sha256": "8bf035b7482284d7826563152f50d747f2ea3635c17617869f9ea27d682a5e73"
+    },
+    {
+      "file": "src/+rocketlab/normalize_vehicle.m",
+      "sha256": "48404f72a72333ed01c50676abd315d64f93fb1d56158087ad455322020c5d0d"
+    },
+    {
+      "file": "src/+rocketlab/plot_flight_comparison.m",
+      "sha256": "b2e91084266525800ba567b456c364390af6438dcbbd82517b53056fea8f626c"
+    },
+    {
+      "file": "src/+rocketlab/point_loads.m",
+      "sha256": "95ef69071184adde0ecefee5f62e90bf657b42e5ce4fa9e982e51c551d7aace9"
+    },
+    {
+      "file": "src/+rocketlab/quat_rotation.m",
+      "sha256": "a7f8afbbe074094b132feb543b8b1f8ab37db3b284df59899143a44ac042eabf"
+    },
+    {
+      "file": "src/+rocketlab/recovery_sensitivity.m",
+      "sha256": "1a5a4f16d25b97a36fddbd5ff3f88b024961a00e280cf7fb3403effde8393aec"
+    },
+    {
+      "file": "src/+rocketlab/relative_flow.m",
+      "sha256": "caae6d1d751a53bef60f7c990fcce92b17ac875dce2c7e0df1e25687b6fffa42"
+    },
+    {
+      "file": "src/+rocketlab/section_forces.m",
+      "sha256": "7e8ec6904837f9c2a4d245b9c7d857f38a48051bf0f6ba02f51e362478871467"
+    },
+    {
+      "file": "src/+rocketlab/signed_stress.m",
+      "sha256": "b8df5b798cb472c2665347fa302c05bfbd429dfad12c5bef7d49a555e4d4e49e"
+    },
+    {
+      "file": "src/+rocketlab/simulate_sixdof.m",
+      "sha256": "581168e550e0bc3e8a1b15923fcd51c83cbbc5868b848eeca58efc77aa6ac2f7"
+    },
+    {
+      "file": "src/+rocketlab/simulate_vertical.m",
+      "sha256": "7c4ce6c454ff294f20aafa89b2676c403877a712c3f1790fde02c3329dd5b294"
+    },
+    {
+      "file": "src/+rocketlab/sixdof_demo_config.m",
+      "sha256": "125de0e0bb7eb60fe17e12f143e3e17591d64d452e754c1d2f352bbe987f2f2e"
+    },
+    {
+      "file": "src/+rocketlab/sixdof_forces.m",
+      "sha256": "eedb2a95025a6584ee80ea800029d572a91924825b0f7942efda431602928dad"
+    },
+    {
+      "file": "src/+rocketlab/sixdof_history.m",
+      "sha256": "087ac004cdb21609009a5f08d95569d871d8944fb3cded9ad88bcd054a4cf6ef"
+    },
+    {
+      "file": "src/+rocketlab/sixdof_history_table.m",
+      "sha256": "99b018fabc8c831796e39fe2a33c82794e0726b9d46e2976344be68d654f5aa2"
+    },
+    {
+      "file": "src/+rocketlab/sixdof_load_case.m",
+      "sha256": "fcc97e5885a2d8f8248c694aa2b334424a5c97a61e137b989d104e5044a2a93a"
+    },
+    {
+      "file": "src/+rocketlab/sixdof_propulsion.m",
+      "sha256": "2c57e0096d3cca50403cd716b555d37ef5540e353469a2bb90cdc1f64ad7ea8c"
+    },
+    {
+      "file": "src/+rocketlab/sixdof_rhs.m",
+      "sha256": "f7e8add1430c5fbc7f8ccff88dcc3972aee55bfebfe6a558e864e5baf957f9f3"
+    },
+    {
+      "file": "src/+rocketlab/sixdof_structure_summary.m",
+      "sha256": "e99e8716d979bf89b3296552f3f88fa1fb164eec80a4a0f265e8ea237fe8c731"
+    },
+    {
+      "file": "src/+rocketlab/snapshot_loads.m",
+      "sha256": "ab79d1e6298cfca13f477f1def051705bc37cef55c36b49addd6806ce7360030"
+    },
+    {
+      "file": "src/+rocketlab/status_label.m",
+      "sha256": "3ef8453ca6ba93a7d280c47a062bdc8f983fb6b6901cdb8f501600d4faccec5f"
+    },
+    {
+      "file": "src/+rocketlab/support_loads.m",
+      "sha256": "378e65f321c0257ba55dd2401eb92b06cf258d45dea692dcbc6049859e3b178f"
+    },
+    {
+      "file": "src/+rocketlab/sweep_thickness.m",
+      "sha256": "b5bb724003bd4322ea4e22ce392fb2f2c74708e36eb25dadfe72e08b38ea88e2"
+    },
+    {
+      "file": "src/+rocketlab/tube_section.m",
+      "sha256": "6e9c5680afe794da6abb5282c8d413ee1c0a84e5b5201d82c32f779376923d75"
+    },
+    {
+      "file": "src/+rocketlab/unique_run.m",
+      "sha256": "f8d58ba741d9438d7d89422daf0b85c91f35d400c120566242bafee2166e7473"
+    },
+    {
+      "file": "src/+rocketlab/validate_flight.m",
+      "sha256": "f795014d59b4e98f3b89496861081a98b98476cee3d882aedbf83da2fccb1df0"
+    },
+    {
+      "file": "src/+rocketlab/validate_sixdof.m",
+      "sha256": "af6be755270da6b50ffd6f16ebeb6a8a8b21e100b23573b53a20f707c99424f3"
+    },
+    {
+      "file": "src/+rocketlab/validate_vehicle.m",
+      "sha256": "7261149f08b80778388df6e1ea4f1db513d4b031e1352fce8f33105ed4bcbbd2"
+    },
+    {
+      "file": "src/+rocketlab/validate_vertical_distribution.m",
+      "sha256": "b9a9c372617bf54674b9e7b7bf10ef7c67c057d5135bc95170738cc52c9968c4"
+    },
+    {
+      "file": "src/+rocketlab/vertical_history.m",
+      "sha256": "fe32eaa720453fd891d7cf3e711691106fc199dfd1fcaec0e29f09a61d8528b4"
+    },
+    {
+      "file": "src/+rocketlab/vertical_load_case.m",
+      "sha256": "3084e9521e9b61c8ab6eca1375a28e4a6a1ed9cb2af2d0ab95e1927848eb05d7"
+    },
+    {
+      "file": "src/+rocketlab/vertical_rhs.m",
+      "sha256": "dad914ef9c7d85282e2e68bc92ab24e52899ab4294ee50d15461a758257ee81e"
+    },
+    {
+      "file": "src/+rocketlab/write_json.m",
+      "sha256": "71f78b4a759a34a7ebcc3fa685a993352b7a226b70e812e4ba39a7eb1f4a3c0c"
+    },
+    {
+      "file": "src/rocketlab_sixdof_forces_sfun.m",
+      "sha256": "fdcd4e9f599f57680c2425343d88a8581de70e78517229c5a8b381f00af388ce"
+    },
+    {
+      "file": "src/rocketlab_vertical_sfun.m",
+      "sha256": "8e910d862c94af881a1a1b3310e28797674b3ab7c6f4d1bb68b54a766c2f3085"
+    },
+    {
+      "file": "Start.bat",
+      "sha256": "8549734327e459db1da7efe8b73a611489a1d800524a748bb64b14f4440970ef"
+    },
+    {
+      "file": "startup_project.m",
+      "sha256": "b93b496ae95243f00276bfa355feea88e040b7e2694d0372d1c4c6a6d1e28fcc"
+    },
+    {
+      "file": "tests/test_core.m",
+      "sha256": "91bf715992820f73f511ed7afc567d8b1ffde7fcf2e426eeb82fc923a01f9518"
+    },
+    {
+      "file": "tests/test_extended.m",
+      "sha256": "76cdfad4fd8a15173ef0274032f4dffd7eb76ca03ea3e230f4c5983eb7071998"
+    },
+    {
+      "file": "tests/test_flight.m",
+      "sha256": "564180ca0ed5bed313cc49b9ceccb3feded3a2eb9ccb1ac951d46dc16d6e8b72"
+    },
+    {
+      "file": "tests/test_flight_bridge.m",
+      "sha256": "745ddca98237c22142946c36e3d7041f92eab3b51d87685c7f353c862531c6c1"
+    },
+    {
+      "file": "tests/test_outputs.m",
+      "sha256": "778c4c33e7ca1be8572d3b581a8c0619073794558c3772d23f1234e9ee7299ed"
+    },
+    {
+      "file": "tests/test_public_content.py",
+      "sha256": "c9af4381fbb1c1ecc89446b921c30d3674dd96054bff7eb93b03475b2a8e5194"
+    },
+    {
+      "file": "tests/test_runtime.m",
+      "sha256": "5745dd39314c2035fbffb4c85acc8a1dc7745292ef3382d91c11e2762a14daed"
+    },
+    {
+      "file": "tests/test_sixdof.m",
+      "sha256": "9ba3d2982ebfe50163882fbb109c8c8335a2543d6198e3a6c9f63845c5dfca82"
+    },
+    {
+      "file": "tests/test_sixdof_native.m",
+      "sha256": "95cb3070e3a3d1d95510760b06b1c9133cbc6086e4d6635b41e5d213e31d4924"
+    },
+    {
+      "file": "tests/test_workflow.m",
+      "sha256": "bb5ae5c729eba76ab3370c5a523c49c2f0dae55a2724ce0ba64322de24b11498"
+    },
+    {
+      "file": "tools/check_public.py",
+      "sha256": "b3da3ce70141be466c239d4327708f3ab74a7452415e1414c16fd049663da8f2"
+    },
+    {
+      "file": "tools/Launch.ps1",
+      "sha256": "71fe484c2d99094e91bc27e7c5d41e93f5a4819bf823a13ccb179bfa41a556c1"
+    },
+    {
+      "file": "tools/verify_release.m",
+      "sha256": "5093b6272987ca36aa2ec769d1b6ba6208ebb7d2c7bea4a3027c6551978bc587"
+    }
+  ],
+  "historyIncluded": false,
+  "originalMaterialsIncluded": false,
+  "generatedUTC": "2026-10-16T00:55:31.798868+00:00",
+  "testsPassed": 73,
+  "codeHash": "fe29f1cbc61c1033240d06ca93c5d2b35bbaece96d46e745e86577f4dc2c4edc"
+}

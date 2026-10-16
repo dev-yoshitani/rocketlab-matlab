@@ -1,0 +1,10 @@
+outputs/
+work/
+data/local/
+*.asv
+*.slxc
+slprj/
+*.m~
+__pycache__/
+.env
+.env.*

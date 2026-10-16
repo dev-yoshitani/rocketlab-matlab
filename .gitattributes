@@ -1,0 +1,4 @@
+* text=auto eol=lf
+*.png -text
+/docs/verification/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/PUBLIC_PACKAGE.json -text
