@@ -4,6 +4,7 @@ from contextlib import contextmanager
 import importlib.util
 import tempfile
 import unittest
+from unittest import mock
 
 ROOT=Path(__file__).resolve().parents[1]
 spec=importlib.util.spec_from_file_location('checker',ROOT/'tools/check_public.py')
@@ -46,6 +47,19 @@ class ContentTests(unittest.TestCase):
             (p/'cached-model.slxc').write_bytes(b'generated cache')
             files,errors=checker.inspect(p)
             self.assertEqual(len(files),1); self.assertFalse(errors)
+
+    def test_reject_local_user_input(self):
+        with scratch() as p:
+            folder=p/'data/local'; folder.mkdir(parents=True)
+            (folder/'parts.csv').write_text('id,position_mm,mass_kg,source\nprivate,1,2,local\n',encoding='utf-8')
+            self.assertTrue(checker.inspect(p)[1])
+
+    def test_reject_tracked_generated_input(self):
+        with scratch() as p:
+            folder=p/'outputs'; folder.mkdir()
+            file=folder/'vehicle.json'; file.write_text('{}',encoding='utf-8')
+            with mock.patch.object(checker,'source_files',return_value=[file]):
+                self.assertTrue(checker.inspect(p)[1])
 
 
 if __name__=='__main__':

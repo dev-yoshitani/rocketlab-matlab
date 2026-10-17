@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
-  "timeUTC": "2026/10/16 01:35:37",
+  "timeUTC": "2026/10/16 05:58:07",
   "matlab": "26.2.0.3386108 (R2026b)",
   "release": "2026b",
   "simulink": true,
   "aerospaceBlockset": true,
-  "testsPassed": 73,
+  "testsPassed": 86,
   "testsFailed": 0,
   "testsIncomplete": 0,
-  "codeHash": "fe29f1cbc61c1033240d06ca93c5d2b35bbaece96d46e745e86577f4dc2c4edc",
+  "codeHash": "bd59e4e78e149e4dd7532b15be651cf35feb54c99dd95e2e50fbeb4f5927ca33",
   "guidedDemoVerified": true,
   "displayUnitsVerified": true,
   "resultInvalidationVerified": true,
@@ -16,13 +16,18 @@
   "nativeFlightComparisonVerified": true,
   "postburnStructuralTransferVerified": true,
   "privateSourceAdapterAbsent": true,
+  "csvImportVerified": true,
+  "csvTotalMass_kg": 4,
+  "csvCGFromNose_m": 0.5499999999999999,
+  "csvLoadSeparationVerified": true,
   "flightComparison": [
-    5.85964338961049E-7,
-    2.0784786785964985E-5,
-    2.2695625779854651E-8,
-    7.0048758231404663E-7
+    5.85964338961049e-07,
+    2.0784786785964985e-05,
+    2.269562577985465e-08,
+    7.004875823140466e-07
   ],
-  "forceResidual_N": 2.3656161930175807E-14,
-  "momentResidual_Nm": 3.0930358550198653E-15,
-  "wholeVehicleStatus": "not_evaluated"
+  "forceResidual_N": 2.3656161930175807e-14,
+  "momentResidual_Nm": 3.0930358550198653e-15,
+  "wholeVehicleStatus": "not_evaluated",
+  "csvVisualCheckUTC": "2026/10/17 14:01:52"
 }

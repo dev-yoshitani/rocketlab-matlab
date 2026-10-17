@@ -35,6 +35,8 @@ def inspect(root):
             continue
         if any(x.lower() in FORBIDDEN_PARTS for x in rel.parts) or p.name.startswith(".env"):
             errors.append(f"{rel}: private input or configuration path")
+        if tuple(x.lower() for x in rel.parts[:2]) == ("data", "local") or rel.parts[0].lower() in {"outputs", "work"}:
+            errors.append(f"{rel}: local user input must not be published")
         if p.suffix.lower() in {".docx", ".xlsx", ".pdf", ".slx", ".mat", ".zip"}:
             errors.append(f"{rel}: binary artifact is outside the public source package")
             continue

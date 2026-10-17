@@ -21,4 +21,5 @@ elseif isstruct(v.joints), v.joints=struct2table(v.joints);
 end
 assert(all(v.joints.s>0 & v.joints.s<v.length) && numel(unique(v.joints.s))==height(v.joints),'rocketlab:Joint','Joint positions must be unique and internal.');
 assert(all(v.joints.ky>0 & v.joints.kz>0),'rocketlab:JointStiffness','Positive rotational stiffness required; a zero stiffness is a mechanism.');
+if isfield(v,'csvImport')&&isempty(rocketlab.csv_import_record(v)), v=rmfield(v,'csvImport'); end
 end

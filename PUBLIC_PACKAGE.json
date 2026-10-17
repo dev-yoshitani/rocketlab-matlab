@@ -16,6 +16,22 @@
       "sha256": "800149602a7b576fd613e75722440bee31a7a0d11004f56cbc1f69cc4cac490f"
     },
     {
+      "file": "CONTRIBUTING.md",
+      "sha256": "f79af9ea9bbfdbc58c53a05ec107499842226ede8d7682d446c9c1b6ca32a181"
+    },
+    {
+      "file": "LICENSE",
+      "sha256": "85559a97d0cdecf359e1c380bc09db48464ebe786828813ceb2365a83dd42751"
+    },
+    {
+      "file": "README.md",
+      "sha256": "b747425826d32dea2700ca5778dea1164df47b45e9407c100ed311cbed87b12b"
+    },
+    {
+      "file": "Start.bat",
+      "sha256": "8549734327e459db1da7efe8b73a611489a1d800524a748bb64b14f4440970ef"
+    },
+    {
       "file": "build_flight_model.m",
       "sha256": "dbcc3c8c90ed5eb9c979cb65e2b4344dfb46d362f2ade495184e9a3416cbc4fc"
     },
@@ -32,52 +48,32 @@
       "sha256": "e96b8d8a4e779f9f5d495c91c581c751c3b9e17ccb7b03df655301202f34c422"
     },
     {
-      "file": "CONTRIBUTING.md",
-      "sha256": "f79af9ea9bbfdbc58c53a05ec107499842226ede8d7682d446c9c1b6ca32a181"
-    },
-    {
       "file": "data/demo/load_case.json",
       "sha256": "34e4905b4063a3b55c23accf93f06eaac69bc7c69cc43b0ffaa258b979b39ab3"
+    },
+    {
+      "file": "data/demo/members.csv",
+      "sha256": "c27e40dd1ba1316c9627a44100ea481a941ded5432309497b05a87167ee47208"
+    },
+    {
+      "file": "data/demo/parts.csv",
+      "sha256": "da2b7bbaae05a0e7f0023c95296d8e492b0a51ce5bb5ae8794652a2e4c9b04df"
     },
     {
       "file": "data/demo/vehicle.json",
       "sha256": "3515186249d817df6b3e93bd48ae7355e1196a853c013128ce85d34aae00de1f"
     },
     {
-      "file": "docs/images/checks.png",
-      "sha256": "82b7031a9706c5b45b6a381e0c1acccf4ed8ca047034e843fff11287766ded5f"
+      "file": "data/templates/members.csv",
+      "sha256": "5f5f99548370f92d8f669274a1ab624eb0ecec306d91ad108678f4ec46070533"
     },
     {
-      "file": "docs/images/deformation.png",
-      "sha256": "96f30132af4129337645d8c2a805f9661c5ddb1ca6e85a5e59aa4571df6cb212"
+      "file": "data/templates/parts.csv",
+      "sha256": "2681873bf4dc59c9a47ea2cfccad3ec5555e0d859a4aa558cd7d4730716fd82d"
     },
     {
-      "file": "docs/images/flight.png",
-      "sha256": "550decab6c9813a002af227073b35a4ae2ba7771c51d2f4a472aebe01bd82644"
-    },
-    {
-      "file": "docs/images/flight_structure.png",
-      "sha256": "04b997a447f1f265e278b19191f2425b40a4eff1bc0f560413a893e13af58ebb"
-    },
-    {
-      "file": "docs/images/home.png",
-      "sha256": "c4554b1f3ecd1051ea56fd6a8318f8193e1c6c8c09a29d44b859d55141126282"
-    },
-    {
-      "file": "docs/images/home_compact.png",
-      "sha256": "446e1effa3c696d7907017ed3a962388b279878674d51340f72c46bf0209ca4a"
-    },
-    {
-      "file": "docs/images/input.png",
-      "sha256": "29ba6bfb203b74aa235466456fc9b01cd47292e6ed2df78dd0fef598d8f8f5a0"
-    },
-    {
-      "file": "docs/images/report.png",
-      "sha256": "867548ab8955b7a1a6714acb84c691220f9de68f890800da2e9b878af49f6aa4"
-    },
-    {
-      "file": "docs/images/structure.png",
-      "sha256": "2bfecfbb19ce2edba4d89dc928a23e82d7f5f14b6d712aea47a91b0789c230fa"
+      "file": "docs/CSV_INPUT.md",
+      "sha256": "00f99a20afe4f9cb7842ccfe6bc9b463f5370937b85f0c160737906a26fe13b8"
     },
     {
       "file": "docs/PUBLISH.md",
@@ -85,35 +81,79 @@
     },
     {
       "file": "docs/USER_GUIDE.md",
-      "sha256": "918336d2ead2386a1a89eb95e68043ebdd98591ab2fc56e67720434de158813f"
-    },
-    {
-      "file": "docs/verification/summary.json",
-      "sha256": "ef73649b1d394ee898085fd851c28e89623a9cb1feeaae23a22e2192df026edd"
-    },
-    {
-      "file": "docs/verification/tests.csv",
-      "sha256": "799ee9ea0f280c365f855ec92cd1259a71a3563469988974cfb1d8048ebc7aa4"
+      "sha256": "92edd75512532b9e5b034c3e4752719cb092563f6c91ab92a12df8eaeb51100d"
     },
     {
       "file": "docs/VERIFICATION.md",
-      "sha256": "01cd6274d12a6f1943e698cbd586c9d20009d8706c98b4b78720f643a8c8211e"
+      "sha256": "b4cbbb10a435a0e39d81423f8ecba2fdf607503b4b64ea29cf91d33f31e9cdcc"
+    },
+    {
+      "file": "docs/images/checks.png",
+      "sha256": "6c017013e7cfebe222705090f8d0662d267fe670809f947c444bbe60b44f3a9c"
+    },
+    {
+      "file": "docs/images/csv_input.png",
+      "sha256": "11f50b5a8dc8cd237631b29f68ff2f860637d17d75339df23c2140ac74949812"
+    },
+    {
+      "file": "docs/images/csv_input_compact.png",
+      "sha256": "400be9790d00ccf9d5170a3765948ef95c3dfae4a64409ee40f405e723b144f8"
+    },
+    {
+      "file": "docs/images/csv_summary.png",
+      "sha256": "d86e84e0db180688b24ba58142469d5c43a81ae364418e1bcc83dfe596df8700"
+    },
+    {
+      "file": "docs/images/csv_summary_compact.png",
+      "sha256": "f75f1944114c3f50f369aab38d018785576e3d0d534f92ab48958e6295abf74c"
+    },
+    {
+      "file": "docs/images/deformation.png",
+      "sha256": "6214583cc515712c62fa8bc61efd6fc432356777bc6e8854f9df1beab42fa2d4"
+    },
+    {
+      "file": "docs/images/flight.png",
+      "sha256": "45ff41b31f9eff6b2a82f2081d6a00f2160ab39c2200d77f22e280b522850b21"
+    },
+    {
+      "file": "docs/images/flight_structure.png",
+      "sha256": "041e02c702f0d010b87e63956b0454b2f2d0d9f417335b87de89cb6ee98cbcf5"
+    },
+    {
+      "file": "docs/images/home.png",
+      "sha256": "525e789ba70d0290605cba16226d2d721be1ff9638c5f618ffc6c010f39cbb47"
+    },
+    {
+      "file": "docs/images/home_compact.png",
+      "sha256": "6dcfe9346f2d3053c005235f096629430a6c07b0e46137c871063c67925ef3db"
+    },
+    {
+      "file": "docs/images/input.png",
+      "sha256": "5ac480c67905d9fbd01d0cf1e5daffb0daf441f44a7af2068bee0902e6e0d489"
+    },
+    {
+      "file": "docs/images/report.png",
+      "sha256": "936b3d1ebf257f3fd40a92861f7f0c4b8129732489f7f63920fa3107e637c935"
+    },
+    {
+      "file": "docs/images/structure.png",
+      "sha256": "1c1efa0643d29701f2795f00e774d56a726f1a243180610da2520d203a3bc7dc"
+    },
+    {
+      "file": "docs/verification/summary.json",
+      "sha256": "3345f65caf90e746f3c3d43ce2c088cccd554fb2fe99e972d61de81730e357fd"
+    },
+    {
+      "file": "docs/verification/tests.csv",
+      "sha256": "4e4a4d001338aa4d240a96e3228873244a2a8bdf75f3025a9aa20b8db8e567b4"
     },
     {
       "file": "export_report.m",
-      "sha256": "3e7719b14de8fc1153625f4d92a4c8af8233e1b29e2a54bb3291eb10562e9982"
+      "sha256": "adaef344d561e594b55c3856bff733ef9c55d8a61278333766c77a610a8d741d"
     },
     {
       "file": "launch_app.m",
-      "sha256": "644d755effdf35c02780828766d91f13ceed9bbffa1ce6d2ee90c4f54a1e217a"
-    },
-    {
-      "file": "LICENSE",
-      "sha256": "85559a97d0cdecf359e1c380bc09db48464ebe786828813ceb2365a83dd42751"
-    },
-    {
-      "file": "README.md",
-      "sha256": "b6847ff1b2b074c514f9a9a3596dce0b80209f0494a5192468dd66911d0fce35"
+      "sha256": "c6708cba8162b19180241e6ea435803b0ef0bca0130bfc2620b4121901e4725c"
     },
     {
       "file": "run_case.m",
@@ -176,6 +216,10 @@
       "sha256": "e42cd61aad41347b3eeb939d02dd4798cbaab14d6509327c0d84c6567f847764"
     },
     {
+      "file": "src/+rocketlab/csv_import_record.m",
+      "sha256": "db26fd56fc7b668b5bfba2aefb2080b0fa5995e9603b3382634f092641408ebd"
+    },
+    {
       "file": "src/+rocketlab/demo_config.m",
       "sha256": "184b68d4329a51a47cb72daeeaef53dc3835e331604d4ca2178b54dd98e8b733"
     },
@@ -214,6 +258,10 @@
     {
       "file": "src/+rocketlab/hash.m",
       "sha256": "b052d579e56e2d1c74cbddd607e0e5942bfcd9fe6a174049df61ea282c236bc1"
+    },
+    {
+      "file": "src/+rocketlab/import_vehicle_csv.m",
+      "sha256": "2521417a743582c42ba83d13f60e910ac7bc91a6e04e39f25bb2c043b7d6b089"
     },
     {
       "file": "src/+rocketlab/inertial_loads.m",
@@ -266,6 +314,10 @@
     {
       "file": "src/+rocketlab/relative_flow.m",
       "sha256": "caae6d1d751a53bef60f7c990fcce92b17ac875dce2c7e0df1e25687b6fffa42"
+    },
+    {
+      "file": "src/+rocketlab/save_vehicle_input.m",
+      "sha256": "792c315403ee5086e771c6b0f558dcb628e485f8e88a132bb4e5974d62c2b866"
     },
     {
       "file": "src/+rocketlab/section_forces.m",
@@ -349,7 +401,7 @@
     },
     {
       "file": "src/+rocketlab/validate_vehicle.m",
-      "sha256": "7261149f08b80778388df6e1ea4f1db513d4b031e1352fce8f33105ed4bcbbd2"
+      "sha256": "ac58cf54d0cbb1d6f6425f100e3e5fd84144f2b719ba45d172cbce66119f2169"
     },
     {
       "file": "src/+rocketlab/validate_vertical_distribution.m",
@@ -380,16 +432,16 @@
       "sha256": "8e910d862c94af881a1a1b3310e28797674b3ab7c6f4d1bb68b54a766c2f3085"
     },
     {
-      "file": "Start.bat",
-      "sha256": "8549734327e459db1da7efe8b73a611489a1d800524a748bb64b14f4440970ef"
-    },
-    {
       "file": "startup_project.m",
       "sha256": "b93b496ae95243f00276bfa355feea88e040b7e2694d0372d1c4c6a6d1e28fcc"
     },
     {
       "file": "tests/test_core.m",
       "sha256": "91bf715992820f73f511ed7afc567d8b1ffde7fcf2e426eeb82fc923a01f9518"
+    },
+    {
+      "file": "tests/test_csv_input.m",
+      "sha256": "e95ff11edcccabf5f6d919dba942acd6bf223d8b825d28dedbf06503e9d76d8b"
     },
     {
       "file": "tests/test_extended.m",
@@ -409,7 +461,7 @@
     },
     {
       "file": "tests/test_public_content.py",
-      "sha256": "c9af4381fbb1c1ecc89446b921c30d3674dd96054bff7eb93b03475b2a8e5194"
+      "sha256": "2f629ac9e1ae7cc01d2947b91d792630774b62e796b4349b9c813e3cd4794796"
     },
     {
       "file": "tests/test_runtime.m",
@@ -428,21 +480,21 @@
       "sha256": "bb5ae5c729eba76ab3370c5a523c49c2f0dae55a2724ce0ba64322de24b11498"
     },
     {
-      "file": "tools/check_public.py",
-      "sha256": "b3da3ce70141be466c239d4327708f3ab74a7452415e1414c16fd049663da8f2"
-    },
-    {
       "file": "tools/Launch.ps1",
       "sha256": "71fe484c2d99094e91bc27e7c5d41e93f5a4819bf823a13ccb179bfa41a556c1"
     },
     {
+      "file": "tools/check_public.py",
+      "sha256": "56e9f9bf899744201a02a7942e13aafa69fd62dcc53c5cc5aeee8057174bfff4"
+    },
+    {
       "file": "tools/verify_release.m",
-      "sha256": "5093b6272987ca36aa2ec769d1b6ba6208ebb7d2c7bea4a3027c6551978bc587"
+      "sha256": "eb57e127249b596d8f5cf219c714c4fdf48d91dcf8a6b44814f47ba01ad282a8"
     }
   ],
   "historyIncluded": false,
   "originalMaterialsIncluded": false,
-  "generatedUTC": "2026-10-16T00:55:31.798868+00:00",
-  "testsPassed": 73,
-  "codeHash": "fe29f1cbc61c1033240d06ca93c5d2b35bbaece96d46e745e86577f4dc2c4edc"
+  "generatedUTC": "2026-10-17T14:02:35.863202+00:00",
+  "testsPassed": 86,
+  "codeHash": "bd59e4e78e149e4dd7532b15be651cf35feb54c99dd95e2e50fbeb4f5927ca33"
 }

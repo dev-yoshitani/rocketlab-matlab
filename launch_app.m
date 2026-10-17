@@ -1,6 +1,9 @@
-function ui = launch_app(visible)
+function ui = launch_app(visible,dialogs)
 % Guided workspace. Display units are converted to SI before calculation.
 if nargin<1, visible='on'; end
+if nargin<2, dialogs=struct; end
+if ~isfield(dialogs,'openFile'), dialogs.openFile=@uigetfile; end
+if ~isfield(dialogs,'chooseFolder'), dialogs.chooseFolder=@uigetdir; end
 environment=startup_project; root=fileparts(mfilename('fullpath'));
 state=struct('vehicle',[],'loadCase',[],'result',[],'import',[],'cancelled',false,'revision',0,'running',false,'flight',[],'flightVehicle',[],'flightDistribution',[],'flightSummary',[],'flightOutputFolder',"",'flightComparison',[],'modelPath',"",'sixdofResult',[],'reportFolder',"");
 ink=[.12,.18,.27]; accent=[.03,.40,.59]; muted=[.38,.45,.53]; paper=[.96,.97,.985];
@@ -35,7 +38,7 @@ ui.GoFlight=card(cards,'飛行を見てみる','高度と荷重の変化を計�
 ui.GoSix=card(cards,'姿勢まで見てみる','横風と回転を含む飛行を計算し、燃焼後の荷重を構造へ渡す。','姿勢を含む飛行を開く',@(~,~)navigate(sixdof));
 help=uigridlayout(g,[5,1]); help.RowHeight={34,36,44,44,'1x'}; help.Padding=[0,8,0,0];
 uilabel(help,'Text','自分の入力を使うとき','FontSize',17,'FontWeight','bold');
-ui.GoInput=uibutton(help,'Text','機体と荷重のJSONを読み込む画面へ','ButtonPushedFcn',@(~,~)navigate(input));
+ui.GoInput=uibutton(help,'Text','CSVまたはJSONの入力画面へ','ButtonPushedFcn',@(~,~)navigate(input));
 uilabel(help,'Text','1  機体の入力で、板厚を mm、ヤング率を GPa で確認する。','WordWrap','on');
 uilabel(help,'Text','2  構造の結果でグラフと評価を確認し、3  レポートへ進む。','WordWrap','on');
 uilabel(help,'Text','計算する範囲と仮定は「計算の根拠」で確認できます。結果には、入力不足と選択した評価の充足を別々に表示します。','WordWrap','on','FontColor',muted);
@@ -46,6 +49,31 @@ ui.Demo=uibutton(actions,'Text','架空デモの入力を読み込む','ButtonPu
 ui.Open=uibutton(actions,'Text','自分の機体JSONと荷重JSONを読み込む','ButtonPushedFcn',@openConfig);
 ui.InputNote=uitextarea(g,'Editable','off','Value',{'日常単位の表を編集すると、計算用のSI単位へ変換します。荷重と構成を先に選んでください。'});
 inputViews=uitabgroup(g); simple=uitab(inputViews,'Title','かんたん設定'); advanced=uitab(inputViews,'Title','詳細の入力（SI単位）');
+ui.InputViews=inputViews; ui.CsvTab=uitab(inputViews,'Title','CSVから入力');
+csv=uigridlayout(ui.CsvTab,[9,1]); csv.RowHeight={55,34,34,24,34,24,34,40,110}; csv.Scrollable='on';
+ui.CsvGrid=csv;
+uilabel(csv,'Text','両CSVと基準重心は同じ原点で入力します。連続円管梁を作ります。接合ありは機体JSONを使ってください。','WordWrap','on');
+row=uigridlayout(csv,[1,2]); row.ColumnWidth={160,'1x'}; row.Padding=[0,0,0,0];
+ui.ChooseMembers=uibutton(row,'Text','部材CSVを選ぶ','ButtonPushedFcn',@(~,~)chooseCsv('members'));
+ui.CsvMembers=uieditfield(row,'text','Editable','off','Placeholder','data/templates/members.csv の様式');
+row=uigridlayout(csv,[1,2]); row.ColumnWidth={160,'1x'}; row.Padding=[0,0,0,0];
+ui.ChooseParts=uibutton(row,'Text','部品CSVを選ぶ','ButtonPushedFcn',@(~,~)chooseCsv('parts'));
+ui.CsvParts=uieditfield(row,'text','Editable','off','Placeholder','data/templates/parts.csv の様式');
+row=uigridlayout(csv,[1,3]); row.Padding=[0,0,0,0];
+for label={'機体ID','改訂','全長 [mm]'}, uilabel(row,'Text',label{1}); end
+row=uigridlayout(csv,[1,3]); row.Padding=[0,0,0,0];
+ui.CsvId=uieditfield(row,'text','Placeholder','例: my-vehicle'); ui.CsvRevision=uieditfield(row,'text','Placeholder','例: R1');
+ui.CsvLength=uieditfield(row,'numeric','Limits',[0 Inf],'Value',0);
+row=uigridlayout(csv,[1,3]); row.Padding=[0,0,0,0];
+for label={'CSVの位置基準','基準質量 [kg]・任意','基準重心 [mm]・任意'}, uilabel(row,'Text',label{1}); end
+row=uigridlayout(csv,[1,3]); row.Padding=[0,0,0,0];
+ui.CsvOrigin=uidropdown(row,'Items',{'選択してください','ノーズから','後端から'},'ItemsData',{'choose','nose','tail'});
+ui.CsvReferenceMass=uieditfield(row,'text','Placeholder','空欄なら比較なし'); ui.CsvReferenceCG=uieditfield(row,'text','Placeholder','空欄なら比較なし');
+row=uigridlayout(csv,[1,3]); row.Padding=[0,0,0,0];
+ui.ImportCSV=uibutton(row,'Text','CSVを読込・照合','ButtonPushedFcn',@importCsv);
+ui.SaveInput=uibutton(row,'Text','機体JSONと照合を保存','Enable','off','ButtonPushedFcn',@saveInput);
+ui.OpenLoad=uibutton(row,'Text','荷重JSONを選ぶ','Enable','off','ButtonPushedFcn',@openLoad);
+ui.CsvSummary=uitextarea(csv,'Editable','off','Value',{'部品表は全機の質量を重複なく記入します。部材表の円管質量は加算しません。';'基準値との差だけを表示し、自動で合否を判定しません。'});
 simpleGrid=uigridlayout(simple,[1,1]); ui.FriendlyTable=uitable(simpleGrid,'CellEditCallback',@editFriendly);
 ui.FriendlyTable.ColumnName={'部材','長さ [mm]','外径 [mm]','板厚 [mm]','ヤング率 [GPa]','密度 [kg/m3]','要求安全率'};
 ui.FriendlyTable.ColumnWidth={110,100,100,100,150,125,'auto'}; ui.FriendlyTable.RowName={};
@@ -126,20 +154,70 @@ style(); fig.UserData=state; refreshWorkflow();
  end
  function openConfig(~,~)
   if state.running, return; end
-  [file,path]=uigetfile('*.json','vehicle.jsonを選択'); if isequal(file,0), return; end
-  [loadFile,loadPath]=uigetfile('*.json','load_case.jsonを選択'); if isequal(loadFile,0), return; end
-  invalidate(); resetSource();
+  [file,path]=dialogs.openFile('*.json','vehicle.jsonを選択'); if isequal(file,0), return; end
+  [loadFile,loadPath]=dialogs.openFile('*.json','load_case.jsonを選択'); if isequal(loadFile,0), return; end
   try
-   v=jsondecode(fileread(fullfile(path,file))); v=rocketlab.normalize_vehicle(v);
-   c=jsondecode(fileread(fullfile(loadPath,loadFile)));
+   v=rocketlab.validate_vehicle(jsondecode(fileread(fullfile(path,file))));
+   c=readLoad(fullfile(loadPath,loadFile),v);
+   invalidate(); resetSource();
    state.vehicle=v; state.loadCase=c; ui.InputTable.Data=v.members; ui.InputTable.ColumnName=v.members.Properties.VariableNames; ui.InputTable.ColumnEditable=ismember(v.members.Properties.VariableNames,{'diameter','thickness','E','nu','density','tension','compression','shear','deflection','strengthFactor','source'});
    if ismember(string(c.mode),["replay","predict"]), ui.InputTable.ColumnEditable=false; end
    ui.Run.Enable='on'; ui.Compare.Enable='on'; ui.Status.Text='構成と荷重を読込済み。';
-  catch e, state.vehicle=[]; ui.Run.Enable='off'; showError(e); end
+  catch e, showError(e); end
   syncInputs(); refreshWorkflow(); tabs.SelectedTab=input; fig.UserData=state;
  end
+ function chooseCsv(kind)
+  if state.running, return; end
+  [file,path]=dialogs.openFile('*.csv','固定様式のCSVを選択'); if isequal(file,0), return; end
+  if strcmp(kind,'members'), ui.CsvMembers.Value=fullfile(path,file); else, ui.CsvParts.Value=fullfile(path,file); end
+  ui.Status.Text='CSVを選択しました。機体情報を入力し「CSVを読込・照合」を押してください。';
+ end
+ function importCsv(~,~)
+  if state.running, return; end
+  try
+   options=struct('id',ui.CsvId.Value,'revision',ui.CsvRevision.Value,'length_mm',ui.CsvLength.Value, ...
+    'origin',ui.CsvOrigin.Value,'referenceMass_kg',optionalNumber(ui.CsvReferenceMass.Value), ...
+    'referenceCG_mm',optionalNumber(ui.CsvReferenceCG.Value));
+   v=rocketlab.import_vehicle_csv(ui.CsvMembers.Value,ui.CsvParts.Value,options);
+   invalidate(); resetSource(); state.vehicle=v; state.loadCase=[];
+   syncInputs(); refreshWorkflow(); fig.UserData=state;
+   ui.Issues.Value={'CSV入力を採用しました。構造計算には、この機体に対応する荷重JSONを別途選択してください。'; ...
+    '連続円管梁 / 仮定付き。部品質量から飛行荷重や慣性テンソルは生成しません。'};
+   ui.Status.Text='取込完了。「機体JSONと照合を保存」、または「荷重JSONを選ぶ」へ進めます。';
+  catch e, showError(e); end
+ end
+ function value=optionalNumber(text)
+  if strlength(strtrim(string(text)))==0, value=NaN; return; end
+  value=str2double(text);
+  assert(isfinite(value),'rocketlab:CSVOptions','基準値は有限の数値、または空欄にしてください。');
+ end
+ function saveInput(~,~)
+  if state.running||isempty(state.vehicle), return; end
+  destination=fullfile(root,'outputs'); if ~isfolder(destination), mkdir(destination); end
+  folder=dialogs.chooseFolder(destination,'保存先を選択（新しい入力フォルダを作成します）'); if isequal(folder,0), return; end
+  try
+   saved=rocketlab.save_vehicle_input(state.vehicle,folder);
+   ui.Status.Text='入力を保存しました: '+string(displayPath(saved));
+  catch e, showError(e); end
+ end
+ function openLoad(~,~)
+  if state.running||isempty(state.vehicle), return; end
+  [file,path]=dialogs.openFile('*.json','この機体に対応する荷重JSONを選択'); if isequal(file,0), return; end
+  try
+   c=readLoad(fullfile(path,file),state.vehicle);
+   invalidate(); state.loadCase=c; syncInputs(); refreshWorkflow(); fig.UserData=state;
+   ui.Issues.Value={'機体と荷重を選択しました。「2 構造を計算」から計算できます。'; ...
+    '選択した荷重と実機構成の対応・出典は利用者が確認してください。'};
+   ui.Status.Text='荷重JSONを読み込みました。構造を計算できます。';
+  catch e, showError(e); end
+ end
+ function c=readLoad(file,v)
+  c=jsondecode(fileread(file));
+  % Reuse the solver's validation instead of duplicating its load rules.
+  rocketlab.analyze_case(v,c);
+ end
  function calculate(~,~)
-  if state.running || isempty(state.vehicle), return; end
+  if state.running || isempty(state.vehicle)||isempty(state.loadCase), return; end
   invalidate(); state.cancelled=false; state.running=true; rev=state.revision;
   ui.Run.Enable='off'; ui.Cancel.Enable='on'; refreshWorkflow(); ui.Status.Text='構造計算中'; drawnow;
   try
@@ -332,13 +410,27 @@ style(); fig.UserData=state; refreshWorkflow();
  end
  function syncInputs()
   if isempty(state.vehicle)
-   ui.FriendlyTable.Data=table(); return
+   ui.FriendlyTable.Data=table(); showCsvSummary(); return
   end
   ui.FriendlyTable.Data=rocketlab.input_view(state.vehicle);
   ui.InputTable.Data=state.vehicle.members;
   ui.InputTable.ColumnEditable=ismember(state.vehicle.members.Properties.VariableNames,{'thickness','E','nu','density','tension','compression','shear','deflection','strengthFactor','source'});
   ui.FriendlyTable.ColumnEditable=[false,false,false,true,true,true,true];
-  if ismember(string(state.loadCase.mode),["replay","predict"]), ui.FriendlyTable.ColumnEditable=false; ui.InputTable.ColumnEditable=false; end
+  if ~isempty(state.loadCase)&&ismember(string(state.loadCase.mode),["replay","predict"]), ui.FriendlyTable.ColumnEditable=false; ui.InputTable.ColumnEditable=false; end
+  showCsvSummary();
+ end
+ function showCsvSummary()
+  audit=[]; if ~isempty(state.vehicle), audit=rocketlab.csv_import_record(state.vehicle); end
+  if isempty(audit)
+   ui.CsvSummary.Value={'現在の構成に対応するCSV照合記録はありません。';'部材を編集した場合は、部品表も確認してCSVを再読込してください。'}; return
+  end
+  ui.CsvSummary.Value={sprintf('部品表の総質量 %.8g kg / ノーズからの重心 %.8g mm',audit.totalMass_kg,audit.cgFromNose_m*1000); ...
+   sprintf('基準との差: 質量 %s / 重心 %s',comparisonText(audit.massDifference_kg,'kg'),comparisonText(audit.cgDifference_m*1000,'mm')); ...
+   '差分の表示であり、合否判定ではありません。部材表の質量は加算していません。'; ...
+   sprintf('構成 %s / 改訂 %s / 原点 %s / 出典 %s, %s',audit.vehicleId,audit.revision,audit.inputOrigin,audit.membersFile.name,audit.partsFile.name)};
+ end
+ function text=comparisonText(value,unit)
+  if isnan(value), text='比較なし'; else, text=sprintf('%.8g %s',value,unit); end
  end
  function editFriendly(~,~)
   if isempty(state.vehicle)||state.running, syncInputs(); return; end
@@ -357,14 +449,21 @@ style(); fig.UserData=state; refreshWorkflow();
   catch e, ui.InputTable.Data=state.vehicle.members; showError(e); end
  end
  function refreshWorkflow()
-  hasInput=~isempty(state.vehicle); hasResult=~isempty(state.result); idle=~state.running;
+  hasInput=~isempty(state.vehicle); hasLoad=~isempty(state.loadCase); hasResult=~isempty(state.result); idle=~state.running;
   ui.Demo.Enable=onoff(idle); ui.Open.Enable=onoff(idle); ui.QuickDemo.Enable=onoff(idle);
-  ui.Run.Enable=onoff(idle&&hasInput); ui.StepReport.Enable=onoff(idle&&hasResult); ui.Export.Enable=onoff(idle&&hasResult);
+  ui.Run.Enable=onoff(idle&&hasInput&&hasLoad); ui.StepReport.Enable=onoff(idle&&hasResult); ui.Export.Enable=onoff(idle&&hasResult);
+  for item=[ui.ChooseMembers,ui.ChooseParts,ui.ImportCSV], item.Enable=onoff(idle); end
+  ui.SaveInput.Enable=onoff(idle&&hasInput); ui.OpenLoad.Enable=onoff(idle&&hasInput);
+  ui.Compare.Enable=onoff(idle&&hasInput&&hasLoad&&ismemberMode());
   if state.running, ui.NextAction.Text='計算しています。完了すると結果を確認できます。';
   elseif hasResult && strlength(state.reportFolder)>0, ui.NextAction.Text='レポートを保存しました。保存先のHTMLを開いて確認できます。';
   elseif hasResult, ui.NextAction.Text='次は 3 レポートへ。部材ごとの評価も確認できます。';
+  elseif hasInput&&~hasLoad, ui.NextAction.Text='CSVを取込済み。CSVタブで保存、または荷重JSONを選択してください。';
   elseif hasInput, ui.NextAction.Text='次は 2 構造を計算。入力を編集したら、もう一度計算します。';
   else, ui.NextAction.Text='最初は「構造デモを試す」から始められます。'; end
+ end
+ function yes=ismemberMode()
+  yes=~isempty(state.loadCase)&&ismember(string(state.loadCase.mode),["snapshot","test"]);
  end
  function value=onoff(condition)
   if condition, value='on'; else, value='off'; end

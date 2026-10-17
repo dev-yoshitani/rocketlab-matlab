@@ -1,0 +1,3 @@
+id,s0_mm,s1_mm,diameter_mm,thickness_mm,E_GPa,nu,density_kg_m3,tension_MPa,compression_MPa,shear_MPa,deflection_mm,strengthFactor,source
+front,0,500,50,2,70,0.33,2700,120,100,60,10,1.5,synthetic example
+aft,500,1000,50,1,70,0.33,2700,120,100,60,10,1.5,synthetic example

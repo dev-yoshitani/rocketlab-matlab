@@ -15,6 +15,10 @@ A Japanese MATLAB desktop workspace for flight, beam loads, deformation, and rep
 自分の入力を使う場合は「機体の入力」で機体JSONと荷重JSONを選びます。
 例は`data/demo`にあります。機体と荷重を組として管理してください。
 
+部材寸法と部品質量をExcelなどで管理している場合は、固定様式のCSVから入力できます。
+「機体の入力」→「CSVから入力」で、質量・重心の集計と機体JSONの保存を行います。
+[CSV入力ガイド](docs/CSV_INPUT.md)にテンプレート、単位、位置基準をまとめています。
+
 ![最初の画面](docs/images/home.png)
 
 ## 必要な環境

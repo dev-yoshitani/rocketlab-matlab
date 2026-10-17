@@ -19,6 +19,8 @@ flat=rmfield(c,'concurrentLoads'); writetable(struct2table(flat),fullfile(folder
 rocketlab.write_json(fullfile(folder,'checks.json'),c);
 rocketlab.write_json(fullfile(folder,'input.json'),struct('vehicle',r.vehicle,'loadCase',r.loadCase));
 rocketlab.write_json(fullfile(folder,'balance.json'),r.balance);
+audit=rocketlab.csv_import_record(r.vehicle);
+if ~isempty(audit), rocketlab.write_json(fullfile(folder,'input_check.json'),audit); end
 f=figure('Visible','off','Position',[50 50 1150 1060],'Color','w');
 cl=onCleanup(@()close(f)); t=tiledlayout(f,3,2,'Padding','compact');
 nexttile; plot(s.s,s.N,'LineWidth',1.4); ylabel('N (tension +) [N]'); grid on; xlabel('s [m]');
@@ -67,6 +69,13 @@ md=[md;"";"## 検証";sprintf('合力残差 [N]: [%.6g, %.6g, %.6g]',r.balance.f
  "## 未確認事項";r.samplingNote; ...
  "局部シェル座屈、ノーズ保持、詳細FEM、フラッタ、ダイバージェンス、実機試験との一致は別評価。"; ...
  "本報告はこれらの評価結果を代用しない。"];
+verificationText=join(md(end-8:end),newline);
+if ~isempty(audit)
+ md=[md;"";"## CSV入力の照合"; ...
+  sprintf('部品表の総質量 %.8g kg、ノーズからの重心 %.8g mm。',audit.totalMass_kg,audit.cgFromNose_m*1000); ...
+  sprintf('基準との差: 質量 %s、重心 %s。',comparisonText(audit.massDifference_kg,'kg'),comparisonText(audit.cgDifference_m*1000,'mm')); ...
+  "部品表だけの集計であり、合否判定ではない。出典・SHA-256・単位・座標はinput_check.jsonを参照。"];
+end
 write(fullfile(folder,'report.md'),join(md,newline));
 html="<html lang='ja'><meta charset='utf-8'><title>RocketLab 解析報告</title>"+ ...
  "<style>body{font:16px Meiryo,sans-serif;max-width:1100px;margin:32px auto;line-height:1.7;color:#183047}table{border-collapse:collapse;width:100%}td,th{padding:7px;border-bottom:1px solid #cbd5e1;text-align:left}img{width:100%}pre{white-space:pre-wrap;background:#f1f5f9;padding:12px}a{color:#1668a8}</style>"+ ...
@@ -79,7 +88,12 @@ html="<html lang='ja'><meta charset='utf-8'><title>RocketLab 解析報告</title
 for k=1:numel(c)
  html=html+"<h3 id='check"+string(k)+"'>"+esc(c(k).memberId)+" / "+esc(c(k).mode)+"</h3><pre>"+esc(jsonencode(c(k),PrettyPrint=true))+"</pre>";
 end
-html=html+"<h2>検証と未確認事項</h2><pre>"+esc(join(md(end-8:end),newline))+"</pre>"+ ...
+if ~isempty(audit)
+ html=html+"<h2>CSV入力の照合</h2><p>"+esc(sprintf('部品表の総質量 %.8g kg / ノーズからの重心 %.8g mm',audit.totalMass_kg,audit.cgFromNose_m*1000))+ ...
+  "</p><p>"+esc(sprintf('基準との差: 質量 %s / 重心 %s。',comparisonText(audit.massDifference_kg,'kg'),comparisonText(audit.cgDifference_m*1000,'mm')))+ ...
+  " 合否判定ではありません。<a href='input_check.json'>照合・出典・SHA-256</a></p>";
+end
+html=html+"<h2>検証と未確認事項</h2><pre>"+esc(verificationText)+"</pre>"+ ...
  "<p><a href='input.json'>入力・出典</a> / <a href='sections.csv'>全断面CSV</a> / <a href='checks.json'>判定JSON</a></p></html>";
 write(fullfile(folder,'report.html'),html);
 result.outputFolder=folder; save(fullfile(folder,'result.mat'),'result');
@@ -94,6 +108,9 @@ if strcmp(m.status,'running'), m.status="failed"; rocketlab.write_json(p,m); end
 end
 function s=esc(s)
 s=replace(string(s),["&","<",">",char(34)],["&amp;","&lt;","&gt;","&quot;"]);
+end
+function text=comparisonText(value,unit)
+if isnan(value), text='比較なし'; else, text=sprintf('%.8g %s',value,unit); end
 end
 function write(path,text)
 fid=fopen(path,'w','n','UTF-8'); assert(fid>=0,'rocketlab:FileWrite','Cannot write report.');
